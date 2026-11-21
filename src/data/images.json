@@ -1,0 +1,58 @@
+{
+  "_readme": "Every image on the site is defined here. Swap a file by changing its src (paths are relative to /public). Originals live in /images and /assets at the project root.",
+  "logos": {
+    "mark":    { "src": "/images/logos/logo-om.png",      "width": 170,  "height": 66,  "alt": "ODM" },
+    "badge":   { "src": "/images/logos/logo-badge.png",   "width": 868,  "height": 862, "alt": "ODM Sportswear varsity badge" },
+    "chrome":  { "src": "/images/logos/logo-chrome.png",  "width": 430,  "height": 220, "alt": "ODM Sportswear" },
+    "tagline": { "src": "/images/logos/logo-tagline.png", "width": 1070, "height": 540, "alt": "Own the Game. Own the Move." }
+  },
+  "hero": {
+    "home": {
+      "src": "/images/hero/aurora-vega-hero.jpg", "width": 630, "height": 755,
+      "alt": "Aurora Vega red basketball set by ODM Sportswear, jersey front and back with matching shorts",
+      "caption": "Aurora Vega",
+      "_todo": "Client design (team name Aurora Vega). Confirm you have permission to display it."
+    }
+  },
+  "packages": {
+    "_readme": "Garment crops from ODM's Anniversary Promo Package graphics (images/78*.jpg). Prices, headline and banner are cropped out; on Sidestep and Overtime a small piece of inclusion text inside the frame was covered with the plain background beside it.",
+    "basic":      { "src": "/images/packages/basic.jpg",      "width": 800, "height": 908, "alt": "Basic package: navy hexagon-pattern ONDMOVE jersey, front and back, with matching shorts" },
+    "pinoy-step": { "src": "/images/packages/pinoy-step.jpg", "width": 800, "height": 908, "alt": "Pinoy Step package: orange full-sublimation jersey, white jersey and black shorts" },
+    "cluster":    { "src": "/images/packages/cluster.jpg",    "width": 800, "height": 908, "alt": "Cluster package: white and black ONDMOVE jerseys with grey brushstroke pattern and shorts" },
+    "matic":      { "src": "/images/packages/matic.jpg",      "width": 800, "height": 908, "alt": "Matic package: white jersey with red and black stripes, matching shorts and hooded warmer" },
+    "sidestep":   { "src": "/images/packages/sidestep.jpg",   "width": 800, "height": 908, "alt": "Sidestep package: green jersey with gold dragon art, reversible black and white upper, and shorts" },
+    "overtime":   { "src": "/images/packages/overtime.jpg",   "width": 800, "height": 908, "alt": "Overtime package: pink and white jersey, shorts, shirt, hooded warmer and jogging pants" }
+  },
+  "designs": {
+    "aurora-vega": {
+      "src": "/images/designs/aurora-vega.jpg", "width": 979, "height": 923,
+      "alt": "Aurora Vega basketball set: red jersey front and back with anchor and compass artwork, number 13, matching shorts",
+      "_todo": "Shows client team name Aurora Vega. Confirm permission to display."
+    },
+    "st-joseph-cupertino": {
+      "src": "/images/designs/st-joseph-cupertino.jpg", "width": 975, "height": 922,
+      "alt": "St. Joseph Cupertino basketball set: white jersey front and back with navy and red trim, number 8, matching shorts",
+      "_todo": "Shows school name St. Joseph Cupertino and its seal. Confirm permission to display."
+    },
+    "the-seekers": {
+      "src": "/images/designs/the-seekers.jpg", "width": 978, "height": 925,
+      "alt": "The Seekers t-shirt: black and red phoenix artwork on the front, ONDMOVE 23 on the back",
+      "_todo": "Shows team name The Seekers and a seal. Confirm permission to display."
+    },
+    "filamer-dancesport": {
+      "src": "/images/designs/filamer-dancesport.jpg", "width": 1200, "height": 1031,
+      "alt": "Filamer Dancesport Team polo: navy with gold and white sweeps and dancer silhouettes, front and back",
+      "_todo": "Shows Filamer Dancesport Team name and school seal. Confirm permission to display."
+    },
+    "joguilon": {
+      "src": "/images/designs/joguilon.jpg", "width": 1081, "height": 919,
+      "alt": "Joguilon grey sports tee: number 27 on the front, JOGUILON 27 on the back",
+      "_todo": "Shows a person's surname (Joguilon) and a seal. Confirm permission to display."
+    },
+    "stone-ville": {
+      "src": "/images/designs/stone-ville.jpg", "width": 1200, "height": 1136,
+      "alt": "Stone Ville basketball jersey: red, black and white diagonal stripes, number 66, front and back",
+      "_todo": "Shows client name Stone Ville AND Nike/Champion marks printed on the design. Confirm permission and that the brand marks are OK to show; otherwise hide it or swap in a clean version."
+    }
+  }
+}

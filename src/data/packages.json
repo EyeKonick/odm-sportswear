@@ -1,0 +1,15 @@
+{
+  "_readme": "Package prices from the ODM 'Anniversary Promo Package' graphics in /images and the 'Anniversary Promo Pricelist'. Set showPrices to false to hide every price on the site (packages and per-piece prices) without deleting anything.",
+  "showPrices": true,
+  "label": "Anniversary promo prices",
+  "currency": "₱",
+  "_todo": "These are ANNIVERSARY PROMO prices. Confirm they are still valid before launch, and update or set showPrices to false when the promo ends. Also confirm whether prices are per player/per set, and whether number print costs extra on every package (the graphics only state '+50 for number print' on Pinoy Step).",
+  "packages": [
+    { "id": "basic",      "name": "Basic",      "price": 749,  "includes": ["Full subli set"] },
+    { "id": "pinoy-step", "name": "Pinoy Step", "price": 849,  "includes": ["1 full subli upper", "1 white upper", "Black shorts"], "note": "+50 for number print" },
+    { "id": "cluster",    "name": "Cluster",    "price": 1099, "includes": ["2 full subli uppers", "1 shorts"] },
+    { "id": "matic",      "name": "Matic",      "price": 1299, "includes": ["Full subli set", "Warmer"] },
+    { "id": "sidestep",   "name": "Sidestep",   "price": 1349, "includes": ["Full subli set", "Rubberized reversible upper"] },
+    { "id": "overtime",   "name": "Overtime",   "price": 2399, "includes": ["Full subli set", "Shirt", "Warmer", "Jogging pants"] }
+  ]
+}

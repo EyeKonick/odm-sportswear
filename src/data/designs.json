@@ -1,0 +1,20 @@
+{
+  "_readme": "Finished ODM mockups shown on Browse Designs. 'image' is a key in images.json designs. 'type' must match a filter id in products.json. 'featured' > 0 puts a design in the Home page row, in that order.",
+  "heroCredits": ["st-joseph-cupertino", "filamer-dancesport", "aurora-vega", "the-seekers"],
+  "_todo_heroCredits": "These client names appear in the Home hero line 'Suited up: ...'. Confirm each client is OK being named.",
+  "designsHeader": "aurora-vega",
+  "designs": [
+    { "id": "st-joseph-cupertino", "name": "St. Joseph Cupertino", "type": "basketball", "piece": "Jersey and shorts set", "image": "st-joseph-cupertino", "featured": 1,
+      "_todo": "Client/school design with seal. Confirm permission to display." },
+    { "id": "the-seekers", "name": "The Seekers", "type": "tshirt", "piece": "Full-sublimation t-shirt", "image": "the-seekers", "featured": 2,
+      "_todo": "Client design with seal. Confirm permission to display." },
+    { "id": "filamer-dancesport", "name": "Filamer Dancesport", "type": "polo", "piece": "Team polo shirt", "image": "filamer-dancesport", "featured": 3,
+      "_todo": "Client/school design with seal. Confirm permission to display." },
+    { "id": "aurora-vega", "name": "Aurora Vega", "type": "basketball", "piece": "Jersey and shorts set", "image": "aurora-vega", "featured": 0,
+      "_todo": "Client design. Confirm permission to display." },
+    { "id": "joguilon", "name": "Joguilon", "type": "tshirt", "piece": "Sports t-shirt", "image": "joguilon", "featured": 0,
+      "_todo": "Shows a person's name and a seal. Confirm permission to display." },
+    { "id": "stone-ville", "name": "Stone Ville", "type": "basketball", "piece": "Basketball jersey", "image": "stone-ville", "featured": 0,
+      "_todo": "Client design with Nike/Champion marks printed on it. Confirm before launch." }
+  ]
+}

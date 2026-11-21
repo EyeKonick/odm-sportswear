@@ -1,0 +1,193 @@
+---
+import Layout from '../layouts/Layout.astro';
+import DesignCard from '../components/DesignCard.astro';
+import OrderSteps from '../components/OrderSteps.astro';
+import Packages from '../components/Packages.astro';
+import contact from '../data/contact.json';
+import images from '../data/images.json';
+import productData from '../data/products.json';
+import designData from '../data/designs.json';
+
+const hero = images.hero.home;
+const badge = images.logos.badge;
+const featured = designData.designs
+  .filter((d) => d.featured > 0)
+  .sort((a, b) => a.featured - b.featured);
+const credits = designData.heroCredits
+  .map((id) => designData.designs.find((d) => d.id === id)?.name)
+  .filter((n): n is string => Boolean(n));
+const lastCredit = credits.pop();
+---
+<Layout current="home">
+  <!-- Hero: Clean Retail, version 4 of bakeoff.html -->
+  <section class="hero" aria-labelledby="hero-title">
+    <div class="panel" aria-hidden="true"></div>
+    <div class="in">
+      <div class="copy">
+        <h1 id="hero-title" class="display">Play in<br />your own<br />colors.</h1>
+        <p class="lede">
+          Full-sublimation jerseys and teamwear for teams, schools and organizations, designed with you in {contact.city}.
+        </p>
+        <div class="acts">
+          <a class="btn p" href={contact.messenger.url} target="_blank" rel="noopener"><svg class="i"><use href="#i-msgr" /></svg>Start Your Custom Order</a>
+          <a class="btn s" href="/designs/">Browse Designs</a>
+        </div>
+      </div>
+
+      <div class="stage">
+        <img class="badge" src={badge.src} width={badge.width} height={badge.height} alt={badge.alt} />
+        <figure class="shot">
+          <img src={hero.src} width={hero.width} height={hero.height} alt={hero.alt} fetchpriority="high" />
+        </figure>
+        <span class="script sig" aria-hidden="true">{hero.caption}</span>
+      </div>
+
+      <div class="below">
+        <i class="rule"></i>
+        <p class="h2">Suited up: <b>{credits.join(', ')}</b> and <b>{lastCredit}.</b></p>
+      </div>
+    </div>
+  </section>
+
+  <!-- What ODM makes -->
+  <section class="makes wrap" aria-labelledby="makes-title">
+    <div class="makes-head">
+      <i class="rule"></i>
+      <h2 id="makes-title" class="h2">What we make, <b>fully sublimated.</b></h2>
+    </div>
+    <ul class="types">
+      {productData.products.map((p) => (
+        <li>
+          <span class="tname">{p.name}</span>
+          {p.filter ? (
+            <a class="tlink" href={`/designs/?type=${p.filter}`}>See designs<svg class="i"><use href="#i-arrow" /></svg></a>
+          ) : (
+            <a class="tlink quiet" href={contact.messenger.url} target="_blank" rel="noopener">Ask on Messenger<svg class="i"><use href="#i-arrow" /></svg></a>
+          )}
+        </li>
+      ))}
+    </ul>
+  </section>
+
+  <!-- Packages & prices (hidden when packages.json showPrices is false) -->
+  <Packages />
+
+  <!-- Featured designs -->
+  <section class="featured wrap" aria-labelledby="featured-title">
+    <div class="row-head">
+      <div>
+        <i class="rule"></i>
+        <h2 id="featured-title" class="h2">Featured <b>designs</b></h2>
+      </div>
+      <a class="tlink" href="/designs/">Browse all designs<svg class="i"><use href="#i-arrow" /></svg></a>
+    </div>
+    <div class="row">
+      {featured.map((d) => <DesignCard design={d} />)}
+    </div>
+  </section>
+
+  <!-- How ordering works -->
+  <section class="how" aria-labelledby="how-title">
+    <div class="wrap">
+      <div class="how-head">
+        <h2 id="how-title" class="display how-title">How ordering<br />works.</h2>
+        <div class="how-side">
+          <p>Everything starts with a message. Tell us about your team and we take it from there, one step at a time.</p>
+          <div class="acts">
+            <a class="btn p" href={contact.messenger.url} target="_blank" rel="noopener"><svg class="i"><use href="#i-msgr" /></svg>Start Your Custom Order</a>
+            <a class="btn s" href="/contact/#prepare">What to prepare</a>
+          </div>
+        </div>
+      </div>
+      <OrderSteps tone="blue" />
+    </div>
+  </section>
+</Layout>
+
+<style>
+  /* ---------- Hero (measured from bakeoff v4 at 1440px) ---------- */
+  .hero { position: relative; color: var(--white); }
+  .panel { position: absolute; left: 0; right: 0; top: 0; height: 590px; background: var(--blue); }
+  .in { position: relative; max-width: var(--max); margin: 0 auto; height: 790px; }
+  .copy { position: absolute; left: var(--gutter); top: 42px; width: 640px; z-index: 3; }
+  .lede { margin-top: 26px; max-width: 38ch; font: 400 17px/1.5 var(--f-sans); letter-spacing: .03em; color: var(--on-blue); }
+  .acts { margin-top: 30px; display: flex; flex-wrap: wrap; gap: 16px; }
+
+  .stage { position: absolute; right: 72px; top: 32px; width: min(560px, 39vw); z-index: 2; }
+  .shot {
+    aspect-ratio: 630 / 755;
+    box-shadow: 0 30px 60px -24px rgba(0, 0, 0, .4);
+    animation: rise 1s var(--ease) both;
+  }
+  .shot img { width: 100%; height: 100%; object-fit: cover; }
+  /* Badge sits just left of the mockup, overlapping its edge, clear of the headline */
+  .badge { position: absolute; left: -200px; top: 4px; width: 172px; height: 172px; z-index: 3; }
+  .sig { position: absolute; left: -208px; top: 428px; z-index: 3; color: var(--white); transform: rotate(-8deg); pointer-events: none; white-space: nowrap; }
+
+  .below { position: absolute; left: var(--gutter); top: 622px; width: 600px; color: var(--ink); }
+
+  @keyframes rise { from { transform: translateY(18px); opacity: .6; } to { transform: none; opacity: 1; } }
+
+  /* ---------- What we make ---------- */
+  .makes { padding-top: 112px; }
+  .makes-head { margin-bottom: 40px; }
+  .types { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); border-top: 1px solid var(--ink); }
+  .types li {
+    display: grid; align-content: space-between; gap: 34px; min-height: 150px;
+    padding: 24px 22px 22px 0;
+  }
+  .types li + li { padding-left: 22px; border-left: 1px solid var(--line); }
+  .tname { font: 400 21px/1.2 var(--f-sans); letter-spacing: .06em; text-transform: uppercase; }
+  .types .tlink { justify-self: start; font-size: 11.5px; }
+  .types .tlink.quiet { color: var(--muted); border-bottom-color: var(--line); }
+  .types .tlink.quiet:hover { color: var(--red); border-bottom-color: currentColor; }
+
+  /* ---------- Featured ---------- */
+  .featured { padding-top: 112px; padding-bottom: 128px; }
+  .row-head { display: flex; justify-content: space-between; align-items: flex-end; gap: 24px; margin-bottom: 40px; }
+  .row { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 32px; }
+
+  /* ---------- How ordering works ---------- */
+  .how { background: var(--blue); color: var(--white); padding: 104px 0 112px; }
+  .how-head { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 470px); gap: 56px; align-items: end; margin-bottom: 72px; }
+  .how-title { font-size: 5.6rem; }
+  .how-side p { font: 400 17px/1.5 var(--f-sans); letter-spacing: .03em; color: var(--on-blue); max-width: 40ch; }
+
+  /* ---------- Narrower desktops and below ---------- */
+  @media (max-width: 1280px) {
+    .copy { width: 560px; }
+    .hero .display { font-size: 6.2rem; }
+    .badge { width: 150px; height: 150px; left: -172px; }
+    .sig { font-size: 72px; left: -180px; top: 380px; }
+  }
+  @media (max-width: 1100px) {
+    .panel { height: auto; bottom: 260px; }
+    .in { height: auto; padding: 48px var(--gutter) 0; }
+    .copy, .stage, .below { position: relative; left: auto; right: auto; top: auto; width: auto; }
+    .hero .display { font-size: 5.2rem; }
+    .stage { width: min(520px, 100%); margin: 56px 0 0 auto; }
+    .badge { left: -110px; top: -40px; width: 150px; height: 150px; }
+    .sig { left: -140px; top: 62%; }
+    .below { margin-top: 48px; max-width: 600px; }
+    .types { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .types li:nth-child(4) { border-left: 0; padding-left: 0; }
+    .types li:nth-child(n + 4) { border-top: 1px solid var(--line); }
+    .row { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .how-head { grid-template-columns: 1fr; }
+    .how-title { font-size: 4.4rem; }
+  }
+  @media (max-width: 640px) {
+    .hero .display { font-size: 3.4rem; }
+    .badge { display: none; }
+    .sig { left: 8px; font-size: 56px; }
+    .stage { margin-top: 40px; }
+    .types { grid-template-columns: 1fr 1fr; }
+    .types li:nth-child(odd), .types li + li:nth-child(odd) { border-left: 0; padding-left: 0; }
+    .types li:nth-child(even), .types li + li:nth-child(even) { border-left: 1px solid var(--line); padding-left: 16px; }
+    .types li:nth-child(n + 3) { border-top: 1px solid var(--line); }
+    .tname { font-size: 17px; }
+    .row { grid-template-columns: 1fr; }
+    .row-head { flex-direction: column; align-items: flex-start; }
+    .how-title { font-size: 3rem; }
+  }
+</style>

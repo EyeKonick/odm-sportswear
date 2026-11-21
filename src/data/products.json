@@ -1,0 +1,18 @@
+{
+  "_readme": "Product types from the Anniversary Promo Pricelist. 'price' is the per-piece anniversary promo price; it only shows while packages.json showPrices is true. 'priceLabel' is the item name as written on the pricelist. 'filter' links to a Browse Designs filter when ODM has a finished mockup of that type; null means no mockup on hand yet.",
+  "_todo_prices": "Anniversary promo prices. Confirm they are still valid before launch (see packages.json).",
+  "products": [
+    { "id": "basketball-jerseys", "name": "Basketball jerseys", "priceLabel": "Upper jersey",           "price": 399, "filter": "basketball" },
+    { "id": "t-shirts",           "name": "T-shirts",           "priceLabel": "T-shirt",                "price": 449, "filter": "tshirt" },
+    { "id": "polo-shirts",        "name": "Polo shirts",        "priceLabel": "Polo shirt",             "price": 549, "filter": "polo" },
+    { "id": "longsleeves",        "name": "Longsleeves",        "priceLabel": "Longsleeves",            "price": 579, "filter": null },
+    { "id": "hooded-longsleeves", "name": "Hooded longsleeves", "priceLabel": "Longsleeves with hood",  "price": 649, "filter": null },
+    { "id": "jogging-pants",      "name": "Jogging pants",      "priceLabel": "Jogging pants",          "price": 699, "filter": null }
+  ],
+  "filters": [
+    { "id": "all",        "label": "All designs" },
+    { "id": "basketball", "label": "Basketball sets" },
+    { "id": "tshirt",     "label": "T-shirts" },
+    { "id": "polo",       "label": "Polo shirts" }
+  ]
+}

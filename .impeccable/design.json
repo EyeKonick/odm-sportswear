@@ -1,0 +1,161 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-11-21T00:00:00Z",
+  "title": "Design System: ODM Sportswear",
+  "extensions": {
+    "colorMeta": {
+      "royal-blue": { "role": "primary", "displayName": "Royal Field Blue", "canonical": "#012c95", "tonalRamp": ["#000d33", "#01175a", "#012c95", "#2f53b4", "#6a85cc", "#a3b4e2", "#d3dcf3", "#eef2fb"] },
+      "signal-red": { "role": "secondary", "displayName": "Signal Red", "canonical": "#d7141a", "tonalRamp": ["#3d0507", "#6e0a0d", "#a40f14", "#d7141a", "#e85a5e", "#f29a9c", "#f9cfd0", "#fdeeee"] },
+      "utility-black": { "role": "neutral", "displayName": "Utility Black", "canonical": "#000000", "tonalRamp": ["#000000", "#111111", "#222222", "#3a3a3a", "#5c5c5c", "#8a8a8a", "#bdbdbd", "#e9e9e9"] },
+      "ink": { "role": "neutral", "displayName": "Ink", "canonical": "#0b0f1e", "tonalRamp": ["#05070f", "#0b0f1e", "#22283d", "#3a405a", "#4a5068", "#7d8296", "#b3b7c5", "#e3e5ec"] },
+      "white": { "role": "neutral", "displayName": "White", "canonical": "#ffffff", "tonalRamp": ["#5f6272", "#8a8d9b", "#b0b3be", "#d0d2da", "#e3e5ec", "#f3f4f7", "#fafafc", "#ffffff"] },
+      "on-blue": { "role": "neutral", "displayName": "On-Blue Mist", "canonical": "#dfe6fb", "tonalRamp": ["#2a3a6e", "#4b5d97", "#6f81b9", "#94a4d4", "#aebce8", "#c9d3f3", "#dfe6fb", "#f2f5fe"] },
+      "muted-slate": { "role": "neutral", "displayName": "Muted Slate", "canonical": "#4a5068", "tonalRamp": ["#1a1d29", "#2b2f40", "#3a3f55", "#4a5068", "#6b7088", "#9095a8", "#b9bdcc", "#e1e3ea"] },
+      "hairline": { "role": "neutral", "displayName": "Hairline", "canonical": "#e3e5ec", "tonalRamp": ["#5d6172", "#878b9a", "#aeb1bd", "#cdd0d9", "#d9dce5", "#e3e5ec", "#eef0f4", "#f8f9fb"] },
+      "wash": { "role": "neutral", "displayName": "Mockup Wash", "canonical": "#f3f4f7", "tonalRamp": ["#62667a", "#8b8fa0", "#b1b4c1", "#d0d3dc", "#e3e5ec", "#f3f4f7", "#f8f9fb", "#fdfdfe"] },
+      "on-black": { "role": "neutral", "displayName": "On-Black", "canonical": "#e9e9e9", "tonalRamp": ["#222222", "#444444", "#666666", "#8a8a8a", "#adadad", "#cfcfcf", "#e9e9e9", "#ffffff"] },
+      "on-black-muted": { "role": "neutral", "displayName": "On-Black Muted", "canonical": "#9aa0b4", "tonalRamp": ["#2b2e39", "#454a5b", "#606679", "#7c8297", "#9aa0b4", "#b9bdcc", "#d6d9e2", "#f0f1f5"] }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Jost 300 uppercase page and hero titles on the blue panel; 5.6rem for inner page heads and the Home ordering band." },
+      "headline": { "displayName": "Headline", "purpose": "Uppercase section headings with a 600-weight emphasised half, always under the red rule." },
+      "title": { "displayName": "Title", "purpose": "Tracked uppercase card names, step titles and checklist items." },
+      "body": { "displayName": "Body", "purpose": "Running text; secondary copy in Muted Slate at 14.5 to 15.5px." },
+      "lede": { "displayName": "Lede", "purpose": "Paragraph under a display title, 38 to 46ch." },
+      "label": { "displayName": "Label", "purpose": "Nav, buttons, field labels, text links, footer heads." },
+      "script": { "displayName": "Script Accent", "purpose": "One rotated name or phrase per view: white on blue or saturated photo, royal blue on white or wash, never on pale photo areas." }
+    },
+    "shadows": [
+      { "name": "overhang", "value": "0 30px 60px -24px rgba(0, 0, 0, .4)", "purpose": "Mockups and the contact card that overhang the blue panel's bottom edge." },
+      { "name": "mockup-rest", "value": "0 24px 44px -30px rgba(1, 20, 70, .45)", "purpose": "Design-card frames at rest on white or wash." },
+      { "name": "mockup-hover", "value": "0 34px 56px -30px rgba(1, 20, 70, .55)", "purpose": "Design-card frame on hover, paired with a 4px lift." }
+    ],
+    "motion": [
+      { "name": "ease", "value": "cubic-bezier(.16, 1, .3, 1)", "purpose": "All transitions and entrances." },
+      { "name": "color", "value": "0.2s", "purpose": "Color, border and background changes on links and buttons." },
+      { "name": "lift", "value": "0.5s", "purpose": "Card lift and shadow growth on hover." },
+      { "name": "zoom", "value": "0.8s", "purpose": "1.025 image zoom inside a hovered card frame." },
+      { "name": "rise", "value": "1s", "purpose": "Hero mockup rises 18px from 0.6 opacity on load." },
+      { "name": "show", "value": "0.6s", "purpose": "Filtered gallery cards fade up 10px." }
+    ],
+    "breakpoints": [
+      { "name": "desktop-narrow", "value": "1280px" },
+      { "name": "tablet", "value": "1100px" },
+      { "name": "footer-stack", "value": "860px" },
+      { "name": "nav-wrap", "value": "760px" },
+      { "name": "phone", "value": "640px" },
+      { "name": "steps-single", "value": "560px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "Black square button for the main action (Start Your Custom Order); hover fills Signal Red.",
+      "html": "<a class=\"ds-btn-primary\" href=\"#\"><svg viewBox=\"0 0 24 24\" width=\"18\" height=\"18\" aria-hidden=\"true\"><path fill=\"currentColor\" d=\"M12 2C6.36 2 2 6.13 2 11.7c0 2.91 1.19 5.44 3.14 7.17V22l2.98-1.64c.83.23 1.71.35 2.62.35h.26c5.64 0 10-4.13 10-9.7S17.64 2 12 2zm1.04 13.06-2.55-2.72-4.97 2.72 5.47-5.8 2.6 2.72 4.92-2.72-5.47 5.8z\"/></svg>Start Your Custom Order</a>",
+      "css": ".ds-btn-primary { display: inline-flex; align-items: center; gap: 12px; height: 50px; padding: 0 24px; background: #000; color: #fff; font: 500 13px/1 Jost, system-ui, sans-serif; letter-spacing: .14em; text-transform: uppercase; text-decoration: none; border-radius: 0; transition: background-color .2s; } .ds-btn-primary:hover { background: #d7141a; } .ds-btn-primary:focus-visible { outline: 2px solid #d7141a; outline-offset: 3px; }"
+    },
+    {
+      "name": "Outline Button on Blue",
+      "kind": "button",
+      "refersTo": "button-outline-on-blue",
+      "description": "Secondary action on the royal-blue panel; hover inverts to white.",
+      "html": "<div class=\"ds-blue-ground\"><a class=\"ds-btn-outline-blue\" href=\"#\">Browse Designs</a></div>",
+      "css": ".ds-blue-ground { background: #012c95; padding: 24px; } .ds-btn-outline-blue { display: inline-flex; align-items: center; height: 50px; padding: 0 24px; border: 1.5px solid #fff; color: #fff; font: 500 13px/1 Jost, system-ui, sans-serif; letter-spacing: .14em; text-transform: uppercase; text-decoration: none; transition: background-color .2s, color .2s; } .ds-btn-outline-blue:hover { background: #fff; color: #012c95; } .ds-btn-outline-blue:focus-visible { outline: 2px solid #d7141a; outline-offset: 3px; }"
+    },
+    {
+      "name": "Outline Button on White",
+      "kind": "button",
+      "refersTo": "button-outline-on-white",
+      "description": "Secondary action on white; hover fills Ink.",
+      "html": "<a class=\"ds-btn-outline-dark\" href=\"#\">How ordering works</a>",
+      "css": ".ds-btn-outline-dark { display: inline-flex; align-items: center; height: 50px; padding: 0 24px; border: 1.5px solid #0b0f1e; color: #0b0f1e; font: 500 13px/1 Jost, system-ui, sans-serif; letter-spacing: .14em; text-transform: uppercase; text-decoration: none; transition: background-color .2s, color .2s; } .ds-btn-outline-dark:hover { background: #0b0f1e; color: #fff; } .ds-btn-outline-dark:focus-visible { outline: 2px solid #d7141a; outline-offset: 3px; }"
+    },
+    {
+      "name": "Main Navigation",
+      "kind": "nav",
+      "refersTo": "nav-bar",
+      "description": "Black utility bar over a 68px white nav: tracked uppercase links with a red underline on hover and current page, outlined Messenger CTA.",
+      "html": "<div class=\"ds-util\"><span>Full-sublimation teamwear</span><a href=\"#\">Call 0963 804 5638</a></div><header class=\"ds-nav\"><span class=\"ds-wm\">ODM Sportswear</span><nav><a href=\"#\" aria-current=\"page\">Home</a><a href=\"#\">Browse Designs</a><a href=\"#\">Contact</a></nav><a class=\"ds-cta\" href=\"#\">Order on Messenger</a></header>",
+      "css": ".ds-util { height: 32px; background: #000; color: #e9e9e9; display: flex; justify-content: space-around; align-items: center; font: 400 12.5px/1 Jost, system-ui, sans-serif; letter-spacing: .04em; } .ds-util a { color: inherit; text-decoration: none; } .ds-util a:hover { color: #fff; text-decoration: underline; text-underline-offset: 3px; } .ds-nav { height: 68px; display: flex; align-items: center; gap: 14px; padding: 0 56px; background: #fff; color: #0b0f1e; } .ds-wm { font: 500 15px/1 Jost, system-ui, sans-serif; letter-spacing: .22em; text-transform: uppercase; } .ds-nav nav { margin: 0 auto; display: flex; gap: 44px; } .ds-nav nav a { padding: 8px 0; border-bottom: 1.5px solid transparent; color: inherit; text-decoration: none; font: 400 13px/1 Jost, system-ui, sans-serif; letter-spacing: .16em; text-transform: uppercase; transition: border-color .2s, color .2s; } .ds-nav nav a:hover, .ds-nav nav a[aria-current] { border-color: #d7141a; color: #d7141a; } .ds-cta { padding: 12px 16px; border: 1px solid #0b0f1e; color: #0b0f1e; text-decoration: none; font: 500 12.5px/1 Jost, system-ui, sans-serif; letter-spacing: .14em; text-transform: uppercase; transition: background-color .2s, color .2s; } .ds-cta:hover { background: #0b0f1e; color: #fff; } .ds-nav a:focus-visible { outline: 2px solid #d7141a; outline-offset: 3px; }"
+    },
+    {
+      "name": "Filter Chip",
+      "kind": "chip",
+      "refersTo": "filter-chip",
+      "description": "Unboxed uppercase filter with a muted count; pressed turns red with a 1.5px red underline.",
+      "html": "<div class=\"ds-bar\"><button class=\"ds-f\" aria-pressed=\"true\">All<span class=\"ds-c\">6</span></button><button class=\"ds-f\" aria-pressed=\"false\">Jerseys<span class=\"ds-c\">4</span></button></div>",
+      "css": ".ds-bar { display: flex; gap: 8px 36px; padding-bottom: 18px; border-bottom: 1px solid #0b0f1e; } .ds-f { display: inline-flex; align-items: baseline; gap: 8px; padding: 8px 0; background: none; border: 0; border-bottom: 1.5px solid transparent; color: #0b0f1e; cursor: pointer; font: 400 13px/1 Jost, system-ui, sans-serif; letter-spacing: .16em; text-transform: uppercase; transition: color .2s, border-color .2s; } .ds-f:hover { color: #d7141a; } .ds-f[aria-pressed='true'] { color: #d7141a; border-color: #d7141a; } .ds-f:focus-visible { outline: 2px solid #d7141a; outline-offset: 3px; } .ds-c { font-size: 12px; letter-spacing: .06em; color: #4a5068; }"
+    },
+    {
+      "name": "Design Card",
+      "kind": "card",
+      "refersTo": "design-card-frame",
+      "description": "Real mockup in a square-cornered wash frame (979/923) with the resting mockup shadow; hover lifts 4px.",
+      "html": "<figure class=\"ds-card\"><div class=\"ds-frame\"></div><figcaption><span class=\"ds-name\">Aurora Vega</span><span class=\"ds-meta\">Basketball set · Front and back</span></figcaption></figure>",
+      "css": ".ds-card { display: grid; gap: 18px; max-width: 420px; margin: 0; } .ds-frame { aspect-ratio: 979 / 923; background: #f3f4f7; box-shadow: 0 24px 44px -30px rgba(1, 20, 70, .45); transition: box-shadow .5s cubic-bezier(.16, 1, .3, 1), transform .5s cubic-bezier(.16, 1, .3, 1); } .ds-card:hover .ds-frame { transform: translateY(-4px); box-shadow: 0 34px 56px -30px rgba(1, 20, 70, .55); } .ds-card figcaption { display: grid; gap: 6px; } .ds-name { font: 500 17px/1.2 Jost, system-ui, sans-serif; letter-spacing: .12em; text-transform: uppercase; color: #0b0f1e; } .ds-meta { font: 400 14.5px/1.4 Jost, system-ui, sans-serif; letter-spacing: .02em; color: #4a5068; }"
+    },
+    {
+      "name": "Overhanging Contact Card",
+      "kind": "card",
+      "refersTo": "contact-card",
+      "description": "White card that crosses the blue panel's bottom edge, with the overhang shadow and hairline-split rows.",
+      "html": "<div class=\"ds-blue-ground ds-tall\"><div class=\"ds-ccard\"><div class=\"ds-item\"><p class=\"ds-label\">Call</p><a class=\"ds-big\" href=\"#\">0963 804 5638</a></div><div class=\"ds-item\"><p class=\"ds-label\">Online shop</p><a class=\"ds-big\" href=\"#\">ondmoveshop.com</a></div></div></div>",
+      "css": ".ds-blue-ground { background: #012c95; padding: 24px; } .ds-tall { padding-bottom: 0; } .ds-ccard { background: #fff; color: #0b0f1e; padding: 12px 36px; transform: translateY(40px); box-shadow: 0 30px 60px -24px rgba(0, 0, 0, .4); max-width: 470px; } .ds-item { display: grid; gap: 14px; padding: 26px 0; } .ds-item + .ds-item { border-top: 1px solid #e3e5ec; } .ds-label { margin: 0; font: 500 12.5px/1 Jost, system-ui, sans-serif; letter-spacing: .16em; text-transform: uppercase; color: #4a5068; } .ds-big { justify-self: start; font: 300 34px/1.1 Jost, system-ui, sans-serif; letter-spacing: .02em; color: inherit; text-decoration: none; border-bottom: 1.5px solid transparent; transition: color .2s, border-color .2s; } .ds-big:hover { color: #d7141a; border-color: #d7141a; }"
+    },
+    {
+      "name": "Section Head with Red Rule",
+      "kind": "custom",
+      "refersTo": "headline",
+      "description": "56 x 3px Signal Red rule above an uppercase headline whose key phrase is bold.",
+      "html": "<div class=\"ds-head\"><i class=\"ds-rule\"></i><h2 class=\"ds-h2\">Featured <b>designs</b></h2></div>",
+      "css": ".ds-rule { display: block; width: 56px; height: 3px; background: #d7141a; margin-bottom: 18px; } .ds-h2 { margin: 0; font: 400 30px/1.2 Jost, system-ui, sans-serif; letter-spacing: .01em; text-transform: uppercase; color: #0b0f1e; } .ds-h2 b { font-weight: 600; }"
+    },
+    {
+      "name": "Script Accent",
+      "kind": "custom",
+      "refersTo": "script",
+      "description": "Mrs Saint Delafield name: white on royal blue or a saturated photo, royal blue on white or wash, never on pale photo areas.",
+      "html": "<div class=\"ds-blue-ground\"><span class=\"ds-script ds-on-blue\">Aurora Vega</span></div><div class=\"ds-wash\"><span class=\"ds-script ds-on-light\">Names &amp; numbers</span></div>",
+      "css": ".ds-blue-ground { background: #012c95; padding: 24px; } .ds-wash { background: #f3f4f7; padding: 24px; } .ds-script { display: inline-block; font: 400 64px/1.1 'Mrs Saint Delafield', cursive; transform: rotate(-5deg); transform-origin: left; } .ds-on-blue { color: #fff; } .ds-on-light { color: #012c95; }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Team Shelf",
+    "overview": "A clean sportswear-retail storefront in which the team's own finished kit is the product on the shelf. The ground is white; royal blue arrives as full-bleed field panels at the top of every page and in the ordering band; black is the utility bar, the primary button and the footer. Real ODM mockups do the selling: they sit on the blue panel or on a pale wash, lift off it with one soft shadow, and on Home, Browse Designs and Contact an object (mockup or contact card) overhangs the panel's bottom edge into the white page below.\n\nType is all Jost: light-weight uppercase display set big, tracked uppercase labels, and calm mixed-case body. One handwritten accent, Mrs Saint Delafield, names the kit or the idea it sits beside. Red is a signal, never a field: hairline rules, the active-nav underline, hover and focus. Everything is square-cornered. The system refuses the dark, flame-and-neon \"athletic\" template.",
+    "keyCharacteristics": [
+      "White ground, royal-blue field panels, black utility bar, buttons and footer.",
+      "Jost light uppercase display, tracked uppercase labels, one script accent.",
+      "Red only as hairlines, active-nav underline, hover and focus.",
+      "Square corners everywhere; 1px and 1.5px lines carry structure.",
+      "One soft drop-shadow family under mockups and overhanging cards.",
+      "Real mockups at or below natural size; logos exactly as supplied."
+    ],
+    "rules": [
+      { "name": "The Red Is a Signal Rule", "body": "Signal Red is never a panel, card, text block or large fill. It appears as hairlines (the 56 x 3px rule, 1.5px underlines), the active-nav underline, hover states (including the primary button's hover fill) and the focus ring. If red covers an area at rest, it is wrong.", "section": "colors" },
+      { "name": "The Blue Is a Field Rule", "body": "Royal blue is used as a full-bleed panel or as small accents on white (numerals, tags, icons, script). It never becomes a button fill; on blue, buttons are black primary or white outline.", "section": "colors" },
+      { "name": "The Script Ground Rule", "body": "The Mrs Saint Delafield accent is white on the royal blue panel and where it crosses a saturated photo (Home hero \"Aurora Vega\"). On light grounds (white or the wash) it is royal blue, as on the Contact \"Names & numbers\" caption. It is never set over pale photo areas. One script line per view, decorative only (aria-hidden or doubled by real text).", "section": "typography" },
+      { "name": "The Light Caps Rule", "body": "Display is Jost 300 uppercase; weight comes from size, not boldness. Bold (600) appears only as the emphasised half of a headline.", "section": "typography" },
+      { "name": "The Natural Size Rule", "body": "A real mockup is never displayed wider than its natural pixel width (the Home hero is capped at 560px for a 630px source; gallery frames stay under the 975 to 1200px sources). Frames share one aspect ratio (979 / 923) so captions align; images fill with object-fit cover, never upscaled.", "section": "layout" },
+      { "name": "The One Shadow Rule", "body": "Only mockups and overhanging cards cast a shadow, and only this soft family. Buttons, nav, panels, chips and text never do.", "section": "elevation" },
+      { "name": "The Logos As Supplied Rule", "body": "The chrome wordmark, varsity badge, O-M mark and tagline lockup are placed exactly as supplied: cropped only, never redrawn, recolored, outlined, shadowed or restyled.", "section": "shapes" }
+    ],
+    "dos": [
+      "Do open every page with the black utility bar, white nav and a royal-blue panel holding a Jost 300 uppercase display title.",
+      "Do put a 56 x 3px Signal Red rule above every section headline.",
+      "Do set the script accent white on blue or over a saturated photo, and royal blue on white or wash.",
+      "Do let one real mockup or card overhang the blue panel's bottom edge, carrying the overhang shadow.",
+      "Do show mockups at or below their natural width, in the shared 979 / 923 frame on the wash ground.",
+      "Do keep every corner square and draw structure with 1px and 1.5px lines."
+    ],
+    "donts": [
+      "Don't use Signal Red as a fill, panel or running-text color; at rest it appears only as hairline rules and the active nav or filter, otherwise only on hover and focus.",
+      "Don't set the script over pale photo areas, or use more than one script line per view.",
+      "Don't add rounded corners, extra shadow styles, or shadows on buttons, panels or text.",
+      "Don't upscale a mockup past its natural pixel width.",
+      "Don't redraw, recolor, outline or restyle any ODM logo; use it exactly as supplied.",
+      "Don't use dark, flame, neon or gradient \"athletic\" treatments."
+    ]
+  }
+}

@@ -1,0 +1,30 @@
+---
+import contact from '../data/contact.json';
+interface Props { tone?: 'blue' | 'white'; }
+const { tone = 'white' } = Astro.props;
+---
+<ol class={`steps ${tone}`}>
+  {contact.steps.map((step, i) => (
+    <li>
+      <span class="n" aria-hidden="true">{i + 1}</span>
+      <h3>{step.title}</h3>
+      <p>{step.text}</p>
+    </li>
+  ))}
+</ol>
+
+<style>
+  .steps { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 40px; counter-reset: s; }
+  li { display: grid; align-content: start; gap: 12px; padding-top: 22px; border-top: 1px solid var(--line); }
+  .n { font: 300 56px/1 var(--f-sans); color: var(--blue); margin-bottom: 6px; font-variant-numeric: tabular-nums; }
+  h3 { font: 500 15px/1.3 var(--f-sans); letter-spacing: .14em; text-transform: uppercase; }
+  p { font: 400 15.5px/1.55 var(--f-sans); color: var(--muted); max-width: 34ch; }
+
+  .blue li { border-top-color: rgba(255, 255, 255, .28); }
+  .blue .n { color: var(--white); }
+  .blue h3 { color: var(--white); }
+  .blue p { color: var(--on-blue); }
+
+  @media (max-width: 1000px) { .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+  @media (max-width: 560px) { .steps { grid-template-columns: 1fr; gap: 28px; } }
+</style>

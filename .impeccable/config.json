@@ -1,0 +1,26 @@
+{
+  "detector": {
+    "ignoreRules": [],
+    "ignoreFiles": [],
+    "ignoreValues": [
+      {
+        "rule": "low-contrast",
+        "value": "*",
+        "files": [
+          "bakeoff.html"
+        ],
+        "createdAt": "2026-11-21T04:26:15.282Z",
+        "reason": "Claude: detector samples V1 section gradient end (#a80000) under text that renders on the grey zone; verified in 1440x900 screenshots"
+      },
+      {
+        "rule": "cramped-padding",
+        "value": "*",
+        "files": [
+          "bakeoff.html"
+        ],
+        "createdAt": "2026-11-21T04:26:15.455Z",
+        "reason": "Claude: full-bleed hero sections; children are absolutely positioned with 48-56px insets, verified in screenshots"
+      }
+    ]
+  }
+}

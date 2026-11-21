@@ -1,0 +1,33 @@
+{
+  "business": "ODM Sportswear",
+  "alsoKnownAs": "OndMove",
+  "tagline": "Own the Game. Own the Move.",
+  "city": "Roxas City",
+  "_todo_city": "Confirm the city wording you want shown (for example 'Roxas City' or 'Roxas City, Capiz').",
+  "description": "We provide the best quality for your full-sublimation jersey needs.",
+  "_source_description": "From the Facebook page intro. Its second sentence ('We have the best machines and equipments...') is NOT used on the site. TODO: confirm before adding any equipment or in-house production claim.",
+
+  "messenger": {
+    "url": "https://m.me/REPLACE-WITH-ODM-PAGE-USERNAME",
+    "label": "ODM Sportswear",
+    "_todo": "PLACEHOLDER. Replace with the real m.me link for the ODM Sportswear Facebook page. This is the only place the Messenger link is set."
+  },
+  "phone": { "display": "0963 804 5638", "tel": "+639638045638" },
+  "shop":  { "url": "https://ondmoveshop.com", "display": "ondmoveshop.com" },
+
+  "steps": [
+    { "title": "Message us", "text": "Open Messenger and tell us your team, school or organization, what you need, and roughly how many pieces." },
+    { "title": "Design it together", "text": "Share your colors and logo. We prepare a front-and-back mockup and adjust it with you." },
+    { "title": "Confirm the roster", "text": "Send the final list of names, numbers and sizes for every player or member." },
+    { "title": "Print and release", "text": "Your set goes to full-sublimation print, and we message you when it is ready." }
+  ],
+  "_todo_steps": "These order steps were written from the brief, not from an ODM source. Confirm they match how you actually work (deposits, approvals, pickup or delivery). No timelines are stated on purpose.",
+
+  "prepare": [
+    { "item": "Team name", "note": "Spelled exactly as it should be printed." },
+    { "item": "Player names and numbers", "note": "One line per player or member." },
+    { "item": "Team colors", "note": "A photo of an old jersey or any color reference helps." },
+    { "item": "Logo files", "note": "The clearest version you have, PNG or PDF if possible." },
+    { "item": "Sizes", "note": "One size for every name on the list." }
+  ]
+}

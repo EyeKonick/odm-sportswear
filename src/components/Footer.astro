@@ -1,0 +1,62 @@
+---
+import contact from '../data/contact.json';
+import images from '../data/images.json';
+const tag = images.logos.tagline;
+const year = new Date().getFullYear();
+---
+<footer class="foot">
+  <div class="wrap grid">
+    <div class="sign">
+      <img class="tag" src={tag.src} width={tag.width} height={tag.height} alt={tag.alt} loading="lazy" />
+      <p>{contact.description}</p>
+    </div>
+
+    <div class="col">
+      <p class="label">Order</p>
+      <ul>
+        <li><a href={contact.messenger.url} target="_blank" rel="noopener"><svg class="i"><use href="#i-msgr" /></svg>Messenger · {contact.messenger.label}</a></li>
+        <li><a href={`tel:${contact.phone.tel}`}><svg class="i"><use href="#i-phone" /></svg>{contact.phone.display}</a></li>
+        <li><a href={contact.shop.url} target="_blank" rel="noopener"><svg class="i"><use href="#i-bag" /></svg>{contact.shop.display}</a></li>
+      </ul>
+    </div>
+
+    <div class="col">
+      <p class="label">Pages</p>
+      <ul>
+        <li><a href="/">Home</a></li>
+        <li><a href="/designs/">Browse Designs</a></li>
+        <li><a href="/contact/">Contact &amp; How to Order</a></li>
+      </ul>
+    </div>
+  </div>
+  <div class="wrap base">
+    <span>© {year} {contact.business} · {contact.alsoKnownAs}</span>
+    <span>Full-sublimation teamwear · {contact.city}</span>
+  </div>
+</footer>
+
+<style>
+  .foot { background: var(--black); color: #e9e9e9; margin-top: 0; }
+  .grid {
+    display: grid; grid-template-columns: minmax(0, 1.3fr) 1fr 1fr; gap: 56px;
+    padding-top: 64px; padding-bottom: 56px; align-items: start;
+  }
+  .tag { width: 100%; max-width: 420px; }
+  .sign p { margin-top: 20px; max-width: 40ch; font: 400 14.5px/1.5 var(--f-sans); letter-spacing: .03em; color: #b9bdcc; }
+  .label { color: #9aa0b4; margin-bottom: 22px; }
+  ul { display: grid; gap: 14px; font: 400 15px/1.3 var(--f-sans); letter-spacing: .03em; }
+  a { display: inline-flex; align-items: center; gap: 10px; transition: color .2s; }
+  a:hover { color: #fff; text-decoration: underline; text-underline-offset: 4px; text-decoration-color: var(--red); }
+  a :global(svg.i) { width: 16px; height: 16px; color: #9aa0b4; }
+  .base {
+    display: flex; justify-content: space-between; gap: 24px;
+    padding-top: 20px; padding-bottom: 24px; border-top: 1px solid #222;
+    font: 400 12.5px/1.4 var(--f-sans); letter-spacing: .04em; color: #9aa0b4;
+  }
+  @media (max-width: 860px) {
+    .grid { grid-template-columns: 1fr 1fr; }
+    .sign { grid-column: 1 / -1; }
+    .tag { max-width: 320px; }
+    .base { flex-direction: column; gap: 6px; }
+  }
+</style>

@@ -1,0 +1,132 @@
+---
+import Layout from '../layouts/Layout.astro';
+import OrderSteps from '../components/OrderSteps.astro';
+import contact from '../data/contact.json';
+import images from '../data/images.json';
+
+const ref = images.designs['joguilon'];
+---
+<Layout
+  current="contact"
+  title="Contact & How to Order"
+  description={`Order custom full-sublimation jerseys from ${contact.business}: message us on Messenger, call ${contact.phone.display}, or shop at ${contact.shop.display}.`}
+>
+  <section class="pagehead chead" aria-labelledby="contact-title">
+    <div class="wrap head">
+      <div class="copy">
+        <h1 id="contact-title" class="display">Start your<br />custom<br />order.</h1>
+        <p class="lede">
+          Message us on Messenger with your team, school or organization and what you need. Prefer to talk? Call us. Looking for ready-made gear? Visit the online shop.
+        </p>
+      </div>
+
+      <div class="card" aria-label="Ways to reach ODM Sportswear">
+        <div class="item">
+          <p class="label">Messenger</p>
+          <a class="btn p wide" href={contact.messenger.url} target="_blank" rel="noopener"><svg class="i"><use href="#i-msgr" /></svg>Start Your Custom Order</a>
+          <p class="small">Opens a chat with <b>{contact.messenger.label}</b> on Facebook Messenger.</p>
+        </div>
+        <div class="item">
+          <p class="label">Call</p>
+          <a class="big" href={`tel:${contact.phone.tel}`}>{contact.phone.display}</a>
+        </div>
+        <div class="item">
+          <p class="label">Online shop</p>
+          <a class="big shop" href={contact.shop.url} target="_blank" rel="noopener">{contact.shop.display}<svg class="i"><use href="#i-out" /></svg></a>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap steps-sec" aria-labelledby="steps-title">
+    <i class="rule"></i>
+    <h2 id="steps-title" class="h2">How ordering <b>works</b></h2>
+    <div class="steps-wrap"><OrderSteps /></div>
+  </section>
+
+  <section class="prepare" id="prepare" aria-labelledby="prepare-title">
+    <div class="wrap pgrid">
+      <div>
+        <i class="rule"></i>
+        <h2 id="prepare-title" class="h2">What to <b>prepare</b></h2>
+        <p class="intro">Having these ready makes the first conversation quick. Don’t have everything yet? Message us anyway and send the rest as you go.</p>
+        <ul class="list">
+          {contact.prepare.map((p) => (
+            <li>
+              <svg class="i" aria-hidden="true"><use href="#i-check" /></svg>
+              <span><b>{p.item}</b>{p.note}</span>
+            </li>
+          ))}
+        </ul>
+        <a class="btn p" href={contact.messenger.url} target="_blank" rel="noopener"><svg class="i"><use href="#i-msgr" /></svg>Start Your Custom Order</a>
+      </div>
+
+      <figure class="ref">
+        <img src={ref.src} width={ref.width} height={ref.height} alt={ref.alt} loading="lazy" />
+        <figcaption><span class="script">Names &amp; numbers</span><span class="cap">Front and back, printed to your roster.</span></figcaption>
+      </figure>
+    </div>
+  </section>
+</Layout>
+
+<style>
+  .chead { padding-bottom: 0; }
+  .head { display: grid; grid-template-columns: minmax(0, 1fr) 470px; gap: 56px; align-items: start; padding-bottom: 0 !important; }
+  .copy { padding-bottom: 88px; }
+
+  /* White contact card overhangs the blue panel, echoing the hero mockup */
+  .card {
+    position: relative; z-index: 2; transform: translateY(104px);
+    background: var(--white); color: var(--ink);
+    box-shadow: 0 30px 60px -24px rgba(0, 0, 0, .4);
+    padding: 12px 36px;
+  }
+  .item { display: grid; gap: 14px; padding: 26px 0; }
+  .item + .item { border-top: 1px solid var(--line); }
+  .label { color: var(--muted); }
+  .wide { width: 100%; }
+  .small { font: 400 14px/1.45 var(--f-sans); color: var(--muted); }
+  .small b { font-weight: 500; color: var(--ink); }
+  .big {
+    justify-self: start; display: inline-flex; align-items: center; gap: 12px;
+    font: 300 34px/1.1 var(--f-sans); letter-spacing: .02em;
+    border-bottom: 1.5px solid transparent; transition: color .2s, border-color .2s;
+    font-variant-numeric: tabular-nums;
+  }
+  .big:hover { color: var(--red); border-color: var(--red); }
+  .shop { font-size: 28px; }
+  .big :global(svg.i) { width: 22px; height: 22px; }
+
+  .steps-sec { padding-top: 200px; padding-bottom: 120px; }
+  .steps-wrap { margin-top: 48px; }
+
+  .prepare { background: var(--wash); padding: 112px 0; }
+  .pgrid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 600px); gap: 72px; align-items: center; }
+  .intro { margin-top: 18px; max-width: 48ch; font: 400 17px/1.55 var(--f-sans); letter-spacing: .02em; color: var(--muted); }
+  .list { margin: 36px 0 40px; border-top: 1px solid var(--ink); }
+  .list li { display: grid; grid-template-columns: 22px 1fr; gap: 16px; padding: 18px 0; border-bottom: 1px solid #d9dce5; }
+  .list :global(svg.i) { color: var(--blue); width: 20px; height: 20px; margin-top: 2px; }
+  .list span { display: grid; gap: 4px; font: 400 15px/1.45 var(--f-sans); color: var(--muted); }
+  .list b { font: 500 15px/1.3 var(--f-sans); letter-spacing: .12em; text-transform: uppercase; color: var(--ink); }
+
+  .ref { position: relative; }
+  .ref img { width: 100%; box-shadow: 0 30px 60px -28px rgba(1, 20, 70, .45); }
+  .ref figcaption { display: grid; gap: 4px; margin-top: 4px; }
+  .ref .script { color: var(--blue); font-size: 64px; line-height: 1.1; transform: rotate(-5deg); transform-origin: left; margin: 14px 0 0 6px; }
+  .cap { font: 400 14.5px/1.4 var(--f-sans); color: var(--muted); padding-left: 2px; }
+
+
+  @media (max-width: 1100px) {
+    .head { grid-template-columns: 1fr; }
+    .copy { padding-bottom: 40px; }
+    .card { max-width: 560px; }
+    .pgrid { grid-template-columns: 1fr; }
+    .ref { max-width: 600px; }
+  }
+  @media (max-width: 640px) {
+    .card { padding: 4px 20px; }
+    .big { font-size: 26px; }
+    .shop { font-size: 22px; }
+    .steps-sec { padding-top: 168px; }
+  }
+</style>

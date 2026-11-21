@@ -1,0 +1,53 @@
+---
+import images from '../data/images.json';
+import products from '../data/products.json';
+
+interface Props {
+  design: { id: string; name: string; type: string; piece: string; image: string };
+  size?: 'row' | 'gallery';
+  eager?: boolean;
+}
+const { design, size = 'row', eager = false } = Astro.props;
+const img = images.designs[design.image as keyof typeof images.designs];
+const typeLabel = products.filters.find((f) => f.id === design.type)?.label ?? '';
+const sizes = size === 'gallery' ? '(min-width: 900px) 640px, 100vw' : '(min-width: 900px) 420px, 100vw';
+---
+<figure class={`card ${size}`} data-type={design.type}>
+  <div class="frame">
+    <img
+      src={img.src}
+      width={img.width}
+      height={img.height}
+      alt={img.alt}
+      sizes={sizes}
+      loading={eager ? 'eager' : 'lazy'}
+      decoding="async"
+    />
+  </div>
+  <figcaption>
+    <span class="name">{design.name}</span>
+    <span class="meta">{design.piece}<span class="dot" aria-hidden="true">·</span>Front and back</span>
+    {size === 'gallery' && <span class="type label">{typeLabel}</span>}
+  </figcaption>
+</figure>
+
+<style>
+  .card { display: grid; gap: 18px; }
+  .frame {
+    background: var(--wash);
+    overflow: hidden;
+    box-shadow: 0 24px 44px -30px rgba(1, 20, 70, .45);
+    transition: box-shadow .5s var(--ease), transform .5s var(--ease);
+  }
+  /* One frame shape for every mockup so captions line up; mockups are never upscaled past their natural width */
+  .frame { aspect-ratio: 979 / 923; }
+  .frame img { width: 100%; height: 100%; object-fit: cover; transition: transform .8s var(--ease); }
+  .card:hover .frame { transform: translateY(-4px); box-shadow: 0 34px 56px -30px rgba(1, 20, 70, .55); }
+  .card:hover .frame img { transform: scale(1.025); }
+  figcaption { display: grid; grid-template-columns: 1fr auto; column-gap: 16px; row-gap: 6px; align-items: baseline; }
+  .name { font: 500 17px/1.2 var(--f-sans); letter-spacing: .12em; text-transform: uppercase; }
+  .meta { grid-column: 1; font: 400 14.5px/1.4 var(--f-sans); letter-spacing: .02em; color: var(--muted); }
+  .dot { margin: 0 8px; }
+  .type { grid-column: 2; grid-row: 1; color: var(--blue); }
+  .gallery .name { font-size: 19px; }
+</style>

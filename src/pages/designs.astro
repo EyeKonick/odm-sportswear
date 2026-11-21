@@ -1,0 +1,151 @@
+---
+import Layout from '../layouts/Layout.astro';
+import DesignCard from '../components/DesignCard.astro';
+import contact from '../data/contact.json';
+import images from '../data/images.json';
+import productData from '../data/products.json';
+import designData from '../data/designs.json';
+
+const designs = designData.designs;
+// Header mockup is chosen in designs.json (designsHeader); pick one that is not in the gallery's first row
+const leadDesign = designs.find((d) => d.id === designData.designsHeader) ?? designs[0];
+const lead = images.designs[leadDesign.image as keyof typeof images.designs];
+// Only offer filters that have at least one design behind them
+const filters = productData.filters.filter(
+  (f) => f.id === 'all' || designs.some((d) => d.type === f.id),
+);
+const count = (id: string) => (id === 'all' ? designs.length : designs.filter((d) => d.type === id).length);
+---
+<Layout
+  current="designs"
+  title="Browse Designs"
+  description={`Finished custom jersey and teamwear designs by ${contact.business}, shown front and back. Pick a look and start your order on Messenger.`}
+>
+  <section class="pagehead" aria-labelledby="designs-title">
+    <div class="wrap head">
+      <div>
+        <h1 id="designs-title" class="display">Browse<br />designs.</h1>
+        <p class="lede">
+          Finished ODM mockups, front and back, made for real teams, schools and organizations. See a look you like? Send it to us and we’ll build your version in your colors.
+        </p>
+      </div>
+      <div class="stage">
+        <figure class="shot">
+          <img src={lead.src} width={lead.width} height={lead.height} alt={lead.alt} fetchpriority="high" />
+        </figure>
+        <span class="script sig" aria-hidden="true">{leadDesign.name}</span>
+      </div>
+    </div>
+  </section>
+
+  <section class="wrap gallery" aria-label="Design gallery">
+    <div class="bar" role="group" aria-label="Filter designs by product type">
+      {filters.map((f, i) => (
+        <button type="button" class="f" data-filter={f.id} aria-pressed={i === 0 ? 'true' : 'false'}>
+          {f.label}<span class="c">{count(f.id)}</span>
+        </button>
+      ))}
+      <p class="status" aria-live="polite" data-status>{designs.length} designs</p>
+    </div>
+
+    <div class="grid" data-grid>
+      {designs.map((d, i) => <DesignCard design={d} size="gallery" eager={i < 4} />)}
+    </div>
+
+    <div class="ask">
+      <p class="h2">Have your own idea? <b>Bring it.</b></p>
+      <p class="ask-lede">Send your team name, colors and logo on Messenger and we’ll mock it up with you.</p>
+      <div class="acts">
+        <a class="btn p" href={contact.messenger.url} target="_blank" rel="noopener"><svg class="i"><use href="#i-msgr" /></svg>Start Your Custom Order</a>
+        <a class="btn s dark" href="/contact/">How ordering works</a>
+      </div>
+    </div>
+  </section>
+</Layout>
+
+<script>
+  const buttons = [...document.querySelectorAll<HTMLButtonElement>('.bar .f')];
+  const cards = [...document.querySelectorAll<HTMLElement>('[data-grid] .card')];
+  const status = document.querySelector<HTMLElement>('[data-status]');
+  const labels: Record<string, string> = {};
+  buttons.forEach((b) => (labels[b.dataset.filter!] = b.firstChild?.textContent?.trim() ?? ''));
+
+  function apply(id: string, push = false) {
+    if (!buttons.some((b) => b.dataset.filter === id)) id = 'all';
+    buttons.forEach((b) => b.setAttribute('aria-pressed', String(b.dataset.filter === id)));
+    let shown = 0;
+    cards.forEach((c) => {
+      const on = id === 'all' || c.dataset.type === id;
+      c.hidden = !on;
+      if (on) {
+        shown++;
+        c.classList.remove('in');
+        void c.offsetWidth;
+        c.classList.add('in');
+      }
+    });
+    if (status) status.textContent = id === 'all' ? `${shown} designs` : `${shown} ${shown === 1 ? 'design' : 'designs'} · ${labels[id]}`;
+    if (push) {
+      const url = new URL(location.href);
+      if (id === 'all') url.searchParams.delete('type');
+      else url.searchParams.set('type', id);
+      history.replaceState(null, '', url);
+    }
+  }
+
+  buttons.forEach((b) => b.addEventListener('click', () => apply(b.dataset.filter!, true)));
+  apply(new URLSearchParams(location.search).get('type') ?? 'all');
+</script>
+
+<style>
+  .head { display: flex; justify-content: space-between; align-items: flex-start; gap: 48px; position: relative; }
+  /* Real mockup overhangs the panel, the same device as the Home hero */
+  .stage { position: relative; flex: none; width: min(440px, 34vw); margin: -24px 16px -184px 0; z-index: 2; }
+  .shot { aspect-ratio: 979 / 923; box-shadow: 0 30px 60px -24px rgba(0, 0, 0, .4); }
+  .shot img { width: 100%; height: 100%; object-fit: cover; }
+  /* Script stays on the blue panel, ending just short of the mockup */
+  .sig { position: absolute; right: calc(100% + 20px); top: 58%; color: var(--white); font-size: 68px; transform: rotate(-8deg); white-space: nowrap; pointer-events: none; }
+
+  .gallery { padding-top: 48px; padding-bottom: 128px; }
+  .bar { margin-right: calc(min(440px, 34vw) + 56px); }
+  .bar {
+    display: flex; flex-wrap: wrap; align-items: center; gap: 8px 36px;
+    padding-bottom: 18px; margin-bottom: 48px; border-bottom: 1px solid var(--ink);
+  }
+  .f {
+    display: inline-flex; align-items: baseline; gap: 8px;
+    padding: 8px 0; border-bottom: 1.5px solid transparent;
+    font: 400 13px/1 var(--f-sans); letter-spacing: .16em; text-transform: uppercase;
+    transition: color .2s, border-color .2s;
+  }
+  .f:hover { color: var(--red); }
+  .f[aria-pressed='true'] { color: var(--red); border-color: var(--red); }
+  .c { font-size: 11px; letter-spacing: .06em; color: var(--muted); font-variant-numeric: tabular-nums; }
+  .status { margin-left: auto; font: 400 14px/1 var(--f-sans); letter-spacing: .03em; color: var(--muted); }
+
+  .grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 64px 40px; align-items: start; }
+  .grid :global(.card[hidden]) { display: none; }
+  .grid :global(.card.in) { animation: show .6s var(--ease) both; }
+  @keyframes show { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: none; } }
+
+  .ask {
+    margin-top: 112px; padding-top: 48px; border-top: 1px solid var(--line);
+    display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 16px 56px; align-items: start;
+  }
+  .ask .h2 { grid-row: span 2; }
+  .ask-lede { font: 400 17px/1.5 var(--f-sans); letter-spacing: .02em; color: var(--muted); max-width: 46ch; }
+  .acts { display: flex; flex-wrap: wrap; gap: 16px; margin-top: 8px; }
+
+  @media (max-width: 1100px) {
+    .sig { font-size: 56px; }
+  }
+  @media (max-width: 760px) {
+    .head { flex-direction: column; }
+    .stage { width: 100%; margin: 0 0 -96px; }
+    .sig { display: none; }
+    .bar { margin-right: 0; margin-top: 96px; }
+    .grid { grid-template-columns: 1fr; gap: 48px; }
+    .status { margin-left: 0; width: 100%; }
+    .ask { grid-template-columns: 1fr; }
+  }
+</style>
